@@ -10,7 +10,7 @@ import java.util.stream.IntStream;
 @Repository
 public class InMemoryPeopleDAO {
 
-    private final List<People> PEOPLES = new ArrayList<>();
+    private static final List<People> PEOPLES = new ArrayList<>();
 
     public List<People> findAllPeople() {
         return PEOPLES;
@@ -18,11 +18,11 @@ public class InMemoryPeopleDAO {
 
     public People savePeople(People people) {
         PEOPLES.add(people);
-        return null;
+        return people;
     }
 
     public People findByEmail(String email) {
-        return PEOPLES.stream().filter(element -> element.getEmail().equals(email)).findFirst().orElse(null);
+        return PEOPLES.stream().filter(element -> element.getEmail().equals(email)).findFirst().orElseThrow();
     }
 
     public People updatePeople(People people) {
