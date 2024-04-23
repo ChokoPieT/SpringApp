@@ -1,0 +1,10 @@
+services:
+  database:
+    image: postgres:14.6
+    environment:
+      POSTGRES_DB: peoples
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+
+    ports:
+      - "5432:5432"
